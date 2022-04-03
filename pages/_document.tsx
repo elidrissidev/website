@@ -9,7 +9,7 @@ function MyDocument() {
           rel="stylesheet"
         />
       </Head>
-      <body className="h-full">
+      <body className="h-full bg-white text-zinc-800">
         <Main />
         <NextScript />
       </body>
