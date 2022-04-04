@@ -1,10 +1,8 @@
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Menu } from '@headlessui/react'
 import clsx from 'clsx'
 
-import IconHamburger from '@/assets/icons/hamburger.svg'
-import IconClose from '@/assets/icons/close.svg'
+import { IconHamburger, IconClose } from '@/components/Icons'
 
 const navigation = [
   { title: 'Home', href: '/' },
@@ -33,15 +31,15 @@ function Header() {
       <Menu as="div" className="relative md:hidden">
         {({ open }) => (
           <>
-            <Menu.Button className="flex justify-center items-center w-6 h-6 focus:outline-none focus:ring focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-600">
+            <Menu.Button className="flex items-center justify-center w-6 h-6 focus:outline-none focus:ring focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-600">
               <span className="sr-only">Toggle navigation menu</span>
-              <Image
-                src={open ? IconClose : IconHamburger}
-                alt=""
-                unoptimized
-              />
+              {open ? (
+                <IconClose aria-hidden="true" />
+              ) : (
+                <IconHamburger aria-hidden="true" />
+              )}
             </Menu.Button>
-            <Menu.Items className="absolute right-0 z-10 py-4 mt-6 w-52 text-center text-white bg-zinc-800 focus:outline-none">
+            <Menu.Items className="absolute right-0 z-10 py-4 mt-6 text-center text-white w-52 bg-zinc-800 focus:outline-none">
               {navigation.map(nav => (
                 <Menu.Item key={nav.title}>
                   {({ active }) => (

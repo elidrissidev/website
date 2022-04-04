@@ -1,0 +1,8 @@
+export { default as IconDownArrows } from './IconDownArrows'
+export { default as IconHamburger } from './IconHamburger'
+export { default as IconClose } from './IconClose'
+export { default as IconArrowLeft } from './IconArrowLeft'
+export { default as IconArrowRight } from './IconArrowRight'
+export { default as IconGithub } from './IconGithub'
+export { default as IconLinkedin } from './IconLinkedin'
+export { default as IconTwitter } from './IconTwitter'
