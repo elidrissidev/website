@@ -1,4 +1,4 @@
-import { Button } from '@/components/Ui'
+import { LinkButton } from '@/components/Ui'
 import { IconDownArrows } from '@/components/Icons'
 
 function Hero() {
@@ -27,9 +27,12 @@ function Hero() {
         <h1 className="mb-8 font-serif text-4xl font-bold tracking-tight md:mb-12">
           Hey, I&apos;m Mohamed Elidrissi and I love building beautiful websites
         </h1>
-        <Button Icon={<IconDownArrows className="text-teal-600" />}>
+        <LinkButton
+          href="#about-me"
+          Icon={<IconDownArrows className="text-teal-600" />}
+        >
           About Me
-        </Button>
+        </LinkButton>
       </div>
     </section>
   )

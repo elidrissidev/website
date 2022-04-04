@@ -5,24 +5,22 @@ const variants = {
   primary: 'bg-cyan-800 text-white hover:bg-teal-600',
 }
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+type LinkButtonProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   variant?: keyof typeof variants
   Icon?: React.ReactNode
 }
 
-function Button({
-  type = 'button',
+function LinkButton({
   variant = 'primary',
   Icon,
   className,
   children,
   ...props
-}: ButtonProps) {
+}: LinkButtonProps) {
   return (
-    <button
-      type={type}
+    <a
       className={clsx(
-        'flex items-stretch text-xs tracking-widest uppercase',
+        'inline-flex items-stretch text-xs tracking-widest uppercase',
         variants[variant],
         className
       )}
@@ -34,8 +32,8 @@ function Button({
         </span>
       )}
       <span className="px-8 py-4">{children}</span>
-    </button>
+    </a>
   )
 }
 
-export default Button
+export default LinkButton
