@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
-import { Layout } from '@/components/Layout'
+import { Layout, ContactMe } from '@/components/Layout'
 import { Hero, AboutMe } from '@/components/Homepage'
 
 const Home: NextPage = () => {
@@ -14,6 +14,7 @@ const Home: NextPage = () => {
       <div className="space-y-24">
         <Hero />
         <AboutMe />
+        <ContactMe />
       </div>
     </Layout>
   )
