@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Header from './Header'
+import Footer from './Footer'
 
 const navLinks = [
   { title: 'Home', href: '/' },
@@ -12,7 +13,8 @@ const Layout: React.FC = ({ children }) => {
   return (
     <>
       <Header navLinks={navLinks} />
-      <main className="max-w-6xl px-8 mx-auto md:px-10">{children}</main>
+      <main className="max-w-6xl px-8 pb-20 mx-auto md:px-10">{children}</main>
+      <Footer navLinks={navLinks} />
     </>
   )
 }
