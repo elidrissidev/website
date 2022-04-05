@@ -38,10 +38,8 @@ function AboutMe() {
           you’ll find me chilling to some Lo-Fi music. I’d love you to check out
           my work.
         </p>
-        <Link href="/" passHref>
-          <LinkButton href="/" variant="secondary">
-            Go to Portfolio
-          </LinkButton>
+        <Link href="/portfolio" passHref>
+          <LinkButton variant="secondary">Go to Portfolio</LinkButton>
         </Link>
       </div>
     </section>

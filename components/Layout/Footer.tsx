@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { IconGithub, IconLinkedin, IconTwitter } from '@/components/Icons'
 
 type FooterProps = {
@@ -7,23 +9,21 @@ type FooterProps = {
 function Footer({ navLinks }: FooterProps) {
   return (
     <footer className="bg-zinc-800">
-      <div className="flex flex-col items-center max-w-6xl px-8 mx-auto space-y-10 md:px-10 md:space-y-0 py-14 md:py-7 md:flex-row">
+      <div className="flex flex-col items-center px-8 py-14 mx-auto space-y-10 max-w-6xl md:px-10 md:space-y-0 md:py-7 md:flex-row">
         <nav
           className="flex flex-col items-center space-y-8 text-white md:flex-1 md:flex-row md:space-y-0 md:space-x-10"
           aria-label="Footer navigation"
         >
           {navLinks.map(nav => (
-            <a
-              key={nav.title}
-              href={nav.href}
-              className="block text-xs tracking-widest uppercase"
-            >
-              {nav.title}
-            </a>
+            <Link key={nav.title} href={nav.href} passHref>
+              <a className="block text-xs tracking-widest uppercase">
+                {nav.title}
+              </a>
+            </Link>
           ))}
         </nav>
         <ul
-          className="flex items-center space-x-4 text-white list-none"
+          className="flex items-center space-x-4 list-none text-white"
           aria-label="Social links"
         >
           <li>

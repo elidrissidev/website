@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { Menu } from '@headlessui/react'
 import clsx from 'clsx'
 
@@ -17,16 +18,16 @@ function Header({ navLinks }: HeaderProps) {
         aria-label="Primary navigation"
       >
         {navLinks.map(nav => (
-          <a
-            key={nav.title}
-            href={nav.href}
-            className={clsx('block text-xs tracking-widest uppercase', {
-              'text-teal-600': pathname === nav.href,
-            })}
-            aria-current={pathname === nav.href ? 'page' : undefined}
-          >
-            {nav.title}
-          </a>
+          <Link key={nav.title} href={nav.href} passHref>
+            <a
+              className={clsx('block text-xs tracking-widest uppercase', {
+                'text-teal-600': pathname === nav.href,
+              })}
+              aria-current={pathname === nav.href ? 'page' : undefined}
+            >
+              {nav.title}
+            </a>
+          </Link>
         ))}
       </nav>
       <Menu
@@ -36,7 +37,7 @@ function Header({ navLinks }: HeaderProps) {
       >
         {({ open }) => (
           <>
-            <Menu.Button className="flex items-center justify-center w-6 h-6 focus:outline-none focus:ring focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-600">
+            <Menu.Button className="flex justify-center items-center w-6 h-6 focus:outline-none focus:ring focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-600">
               <span className="sr-only">Toggle navigation menu</span>
               {open ? (
                 <IconClose aria-hidden="true" />
@@ -44,20 +45,23 @@ function Header({ navLinks }: HeaderProps) {
                 <IconHamburger aria-hidden="true" />
               )}
             </Menu.Button>
-            <Menu.Items className="absolute right-0 z-10 py-4 mt-6 text-center text-white w-52 bg-zinc-800 focus:outline-none">
+            <Menu.Items className="absolute right-0 z-10 py-4 mt-6 w-52 text-center text-white bg-zinc-800 focus:outline-none">
               {navLinks.map(nav => (
                 <Menu.Item key={nav.title}>
                   {({ active }) => (
-                    <a
-                      href={nav.href}
-                      className={clsx(
-                        'block p-4 text-xs tracking-widest uppercase',
-                        { 'bg-zinc-700': active }
-                      )}
-                      aria-current={pathname === nav.href ? 'page' : undefined}
-                    >
-                      {nav.title}
-                    </a>
+                    <Link href={nav.href} passHref>
+                      <a
+                        className={clsx(
+                          'block p-4 text-xs tracking-widest uppercase',
+                          { 'bg-zinc-700': active }
+                        )}
+                        aria-current={
+                          pathname === nav.href ? 'page' : undefined
+                        }
+                      >
+                        {nav.title}
+                      </a>
+                    </Link>
                   )}
                 </Menu.Item>
               ))}
