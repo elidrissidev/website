@@ -4,18 +4,19 @@ import clsx from 'clsx'
 
 import { IconHamburger, IconClose } from '@/components/Icons'
 
-const navigation = [
-  { title: 'Home', href: '/' },
-  { title: 'Portfolio', href: '#portfolio' },
-  { title: 'Contact Me', href: '#contact' },
-]
+type HeaderProps = {
+  navLinks: { title: string; href: string }[]
+}
 
-function Header() {
+function Header({ navLinks }: HeaderProps) {
   const { pathname } = useRouter()
   return (
     <header className="flex justify-end p-8 mx-auto md:px-10 xl:max-w-6xl md:pt-16 md:pb-12">
-      <div className="hidden space-x-10 md:flex text-zinc-800">
-        {navigation.map(nav => (
+      <nav
+        className="hidden space-x-10 md:flex text-zinc-800"
+        aria-label="Primary navigation"
+      >
+        {navLinks.map(nav => (
           <a
             key={nav.title}
             href={nav.href}
@@ -27,8 +28,12 @@ function Header() {
             {nav.title}
           </a>
         ))}
-      </div>
-      <Menu as="div" className="relative md:hidden">
+      </nav>
+      <Menu
+        as="nav"
+        className="relative md:hidden"
+        aria-label="Mobile navigation"
+      >
         {({ open }) => (
           <>
             <Menu.Button className="flex items-center justify-center w-6 h-6 focus:outline-none focus:ring focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-600">
@@ -40,7 +45,7 @@ function Header() {
               )}
             </Menu.Button>
             <Menu.Items className="absolute right-0 z-10 py-4 mt-6 text-center text-white w-52 bg-zinc-800 focus:outline-none">
-              {navigation.map(nav => (
+              {navLinks.map(nav => (
                 <Menu.Item key={nav.title}>
                   {({ active }) => (
                     <a
